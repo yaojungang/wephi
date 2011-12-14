@@ -21,7 +21,7 @@
         <?php
         $d = dirname(__FILE__);
         define('ROOT', $d == '' ? '/' : $d . '/');
-        if(!file_exists(ROOT . 'core/config0.php')) {
+        if(!file_exists(ROOT . 'core/config.php')) {
             header('Location: install/index.php');
             exit();
         }
