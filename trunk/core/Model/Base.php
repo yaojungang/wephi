@@ -12,8 +12,8 @@ class Model_Base extends Zend_Db_Table
             exit('Please Check Your Config File : ' . CORE_PATH . 'config.php');
         }
         $this->_name = $dbCfg['dbprefix'] . $this->_name;
-       // $this->db = $db = Zend_Db::factory('PDO_MYSQL', $dbCfg);
-        $this->db = $db = Zend_Db::factory('Mysqli', $dbCfg);
+        $this->db = $db = Zend_Db::factory('PDO_MYSQL', $dbCfg);
+       // $this->db = $db = Zend_Db::factory('Mysqli', $dbCfg);
         Zend_Db_Table_Abstract::setDefaultAdapter($db);
         parent::__construct();
     }
