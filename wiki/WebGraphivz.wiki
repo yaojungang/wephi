@@ -16,6 +16,7 @@ Add your content here.  Format your content with:
 === 安装graphviz依赖 ===
 {{{
  cd  /etc/yum.repos.d/  &&  wget http://www.graphviz.org/graphviz-rhel.repo
-
  yum install graphviz
 }}}
+
+=== 安装wephi ===
