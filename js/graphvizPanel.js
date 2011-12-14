@@ -167,7 +167,7 @@ Ext.onReady(function(){
             text:'属性',
             handler:function(btn){
                 var win = Tools.graphviz.NodeAttrWindow;
-                var p = Tools.graphviz.MainPanel.getPosition();
+                var p = Tools.graphviz.EdgePanel.getPosition();
                 win.setPosition(p[0],p[1]);
                 var  grid   = win.down('propertygrid');
                 var selects = Tools.graphviz.NodePanel.getSelectionModel().getSelection();
@@ -270,7 +270,7 @@ Ext.onReady(function(){
             text:'属性',
             handler:function(btn){
                 var win = Tools.graphviz.EdgeAttrWindow;
-                var p = Tools.graphviz.MainPanel.getPosition();
+                var p = Tools.graphviz.EdgePanel.getPosition();
                 win.setPosition(p[0],p[1]);
                 var  grid   = win.down('propertygrid');
                 var selects = Tools.graphviz.EdgePanel.getSelectionModel().getSelection();
