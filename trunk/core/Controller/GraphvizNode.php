@@ -30,8 +30,7 @@ class Controller_GraphvizNode extends Controller_Base
         $conditions = array();
         $_gid = $this->getParam('gid');
         if(strlen($_gid) > 0) {
-            $conditions['gid'] = '%' . $_gid . '%';
-            $select->where('gid LIKE :gid');
+            $select->where('gid = "' . (int)$_gid . '"');
         }
         $_name = $this->getParam('name');
         if(strlen($_name) > 0) {

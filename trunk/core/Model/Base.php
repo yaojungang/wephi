@@ -202,7 +202,7 @@ class Model_Base extends Zend_Db_Table
         $db = $this->getAdapter();
         $select->from($this->_name, '*');
         //打印SQL语句
-        //$sql = $select->__toString(); var_dump($sql); exit;
+        //var_dump($params);$sql = $select->__toString(); var_dump($sql); exit;
         return $db->fetchAll($select, $params);
     }
 
