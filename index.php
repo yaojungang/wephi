@@ -1,3 +1,11 @@
+<?php
+$d = dirname(__FILE__);
+define('ROOT', $d == '' ? '/' : $d . '/');
+if(!file_exists(ROOT . 'core/config.php')) {
+    header('Location: install/index.php');
+    exit();
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
@@ -18,13 +26,5 @@
         <script type="text/javascript" src="js/graphvizPanel.js"></script>
     </head>
     <body>
-        <?php
-        $d = dirname(__FILE__);
-        define('ROOT', $d == '' ? '/' : $d . '/');
-        if(!file_exists(ROOT . 'core/config.php')) {
-            header('Location: install/index.php');
-            exit();
-        }
-        ?>
     </body>
 </html>
