@@ -334,7 +334,7 @@ Ext.onReady(function(){
             handler : function(button) {
                 button.el.insertHtml(
                     'beforeBegin',
-                    '<form action="/tools/graphviz/code/id/'+Tools.graphviz.currentGid+'/t'+(new Date().getTime())+'" target="_blank" method="get" style="display:none"></form>'
+                    '<form action="core/index.php?m=grahp&do=code&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="get" style="display:none"></form>'
                     ).submit();
             }
         },'->',{
@@ -344,7 +344,7 @@ Ext.onReady(function(){
                 var panel = btn.up('panel');
                 Ext.Ajax.request({
                     method:'GET',
-                    url: '/tools/graphviz/code',
+                    url: 'core/index.php?m=grahp&do=code',
                     params:{
                         'id':Tools.graphviz.currentGid
                     },
@@ -367,7 +367,7 @@ Ext.onReady(function(){
             handler : function(button) {
                 button.el.insertHtml(
                     'beforeBegin',
-                    '<form action="/tools/graphviz/image/id/'+Tools.graphviz.currentGid+'/t'+(new Date().getTime())+'" target="_blank" method="get" style="display:none"></form>'
+                    '<form method="GET" action="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="get" style="display:none"></form>'
                     ).submit();
             }
         },'->',{
@@ -375,8 +375,8 @@ Ext.onReady(function(){
             tooltip:'刷新',
             handler:function(btn){
                 var panel = btn.up('panel');
-                panel.update('<a href="/tools/graphviz/image/id/'+Tools.graphviz.currentGid+'/t'+(new Date().getTime())+'" target="_blank">'
-                    +'<img width="498" src="/tools/graphviz/image/id/'+Tools.graphviz.currentGid+'/t'+(new Date().getTime())+'" /></a>');
+                panel.update('<a href="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank">'
+                    +'<img width="498" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
             }
         }]
     });
@@ -415,12 +415,12 @@ Ext.onReady(function(){
     });
     /****************************************************************************************/
     Tools.graphviz.functionUpdateImageAndcode = function (){
-        Tools.graphviz.ImagePanel.update('<a href="/tools/graphviz/image/id/'+Tools.graphviz.currentGid+'/t'+(new Date().getTime())+'" target="_blank">'
-            +'<img width="498" src="/tools/graphviz/image/id/'+Tools.graphviz.currentGid+'/t'+(new Date().getTime())+'" /></a>');
+        Tools.graphviz.ImagePanel.update('<a href="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank">'
+            +'<img width="498" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
 
         Ext.Ajax.request({
             method:'GET',
-            url: '/tools/graphviz/code',
+            url: 'core/index.php?m=grahp&do=code',
             params:{
                 'id':Tools.graphviz.currentGid
             },

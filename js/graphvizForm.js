@@ -94,7 +94,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'POST',
-                            url: '/tools/graphviz/jsongraphsave',
+                            url: 'core/index.php/?m=graph&do=save',
                             params:{
                                 'id':id,
                                 'advanced':0
@@ -119,7 +119,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'GET',
-                            url: '/tools/graphviz/jsongraphdel',
+                            url: 'core/index.php/?m=graph&do=del',
                             params:{
                                 'id':id
                             },
@@ -142,13 +142,13 @@ Ext.onReady(function(){
                 values = form.getValues();
                 if (form.getForm().isValid()) {
                     form.getForm().submit({
-                        url: '/tools/graphviz/jsongraphsave',
+                        url: 'core/index.php/?m=graph&do=save',
                         submitEmptyText: false,
                         waitMsg: 'Saving Data...',
                         success: function(f, action) {
                             Etao.msg.info('Success', action.result.msg);
-                            //win.hide();
-                            //form.getForm().reset();
+                            win.hide();
+                            form.getForm().reset();
                             Tools.graphviz.GraphStore.load();
                         }
                     });
@@ -278,7 +278,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'GET',
-                            url: '/tools/graphviz/jsongraphdel',
+                            url: 'core/index.php/?m=graph&do=del',
                             params:{
                                 'id':id
                             },
@@ -301,13 +301,13 @@ Ext.onReady(function(){
                 values = form.getValues();
                 if (form.getForm().isValid()) {
                     form.getForm().submit({
-                        url: '/tools/graphviz/jsongraphsave',
+                        url: 'core/index.php/?m=graph&do=save',
                         submitEmptyText: false,
                         waitMsg: 'Saving Data...',
                         success: function(f, action) {
                             Etao.msg.info('Success', action.result.msg);
-                            //win.hide();
-                            //form.getForm().reset();
+                            win.hide();
+                            form.getForm().reset();
                             Tools.graphviz.GraphStore.load();
                         }
                     });
@@ -401,7 +401,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'GET',
-                            url: '/tools/graphviz/jsonnodedel',
+                            url: 'core/index.php/?m=node&do=del',
                             params:{
                                 'id':id
                             },
@@ -424,13 +424,13 @@ Ext.onReady(function(){
                 values = form.getValues();
                 if (form.getForm().isValid()) {
                     form.getForm().submit({
-                        url: '/tools/graphviz/jsonnodesave',
+                        url: 'core/index.php/?m=node&do=save',
                         submitEmptyText: false,
                         waitMsg: 'Saving Data...',
                         success: function(f, action) {
                             Etao.msg.info('Success', action.result.msg);
-                            //win.hide();
-                            //form.getForm().reset();
+                            win.hide();
+                            form.getForm().reset();
                             Tools.graphviz.EdgeStore.load();
                             Tools.graphviz.NodeStore.load();
                             Tools.graphviz.functionUpdateImageAndcode();
@@ -521,7 +521,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'GET',
-                            url: '/tools/graphviz/jsonedgedel',
+                            url: 'core/index.php/?m=edge&do=del',
                             params:{
                                 'id':id
                             },
@@ -544,13 +544,13 @@ Ext.onReady(function(){
                 values = form.getValues();
                 if (form.getForm().isValid()) {
                     form.getForm().submit({
-                        url: '/tools/graphviz/jsonedgesave',
+                        url: 'core/index.php/?m=edge&do=save',
                         submitEmptyText: false,
                         waitMsg: 'Saving Data...',
                         success: function(f, action) {
                             Etao.msg.info('Success', action.result.msg);
-                            //win.hide();
-                            //form.getForm().reset();
+                            win.hide();
+                            form.getForm().reset();
                             Tools.graphviz.EdgeStore.load();
                             Tools.graphviz.functionUpdateImageAndcode();
                         }
