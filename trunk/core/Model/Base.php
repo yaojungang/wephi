@@ -7,10 +7,8 @@ class Model_Base extends Zend_Db_Table
 
     public function __construct()
     {
-        $config = include CORE_PATH . 'config.php';
-        if(is_array($config) && isset($config['db'])) {
-            $dbCfg = $config['db'];
-        } else {
+        $dbCfg = include CORE_PATH . 'config.php';
+        if(!is_array($dbCfg)) {
             exit('Please Check Your Config File : ' . CORE_PATH . 'config.php');
         }
         $this->_name = $dbCfg['dbprefix'] . $this->_name;

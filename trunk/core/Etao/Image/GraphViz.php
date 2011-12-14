@@ -80,7 +80,7 @@ class Etao_Image_GraphViz
         } else {
             $this->setBinPath('/usr/local/bin/');
         }
-        if(file_exists(CORE_PATH . 'config.php')) {
+        if(defined('CORE_PATH') && file_exists(CORE_PATH . 'config.php')) {
             $config = include CORE_PATH . 'config.php';
             if(is_array($config) && isset($config['dotPath'])) {
                 $this->setBinPath($config['dotPath']);
@@ -999,12 +999,6 @@ class Etao_Image_GraphViz
         }
 
         return $data->getCode() == $code;
-    }
-
-    private function _isWindows()
-    {
-        stripos('WIN', PHP_OS) > 0 ? $r = true : $r = false;
-        return $r;
     }
 
 }
