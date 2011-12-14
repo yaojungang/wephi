@@ -358,7 +358,7 @@ Ext.onReady(function(){
     });
     /****************************************************************************************/
     Tools.graphviz.ImagePanel = Ext.create('Ext.panel.Panel', {
-        title:'图片',
+        title:'预览',
         region:'center',
         collapsible:true,
         tbar:[{
@@ -381,11 +381,11 @@ Ext.onReady(function(){
         }]
     });
     /****************************************************************************************/
-    Tools.graphviz.EastPanel = Ext.create('Ext.panel.Panel', {
-        region:'east',
+    Tools.graphviz.CenterPanel = Ext.create('Ext.panel.Panel', {
+        region:'center',
         //title:'预览',
-        width:500,
         border:0,
+        flex:1,
         layout:'border',
         defaults:{
             collapsible:true,
@@ -395,14 +395,14 @@ Ext.onReady(function(){
         items:[Tools.graphviz.ImagePanel,Tools.graphviz.CodePanel]
     });
     /****************************************************************************************/
-    Tools.graphviz.CenterPanel = Ext.create('Ext.tab.Panel', {
-        region:'center',
-        flex:1,
+    Tools.graphviz.EastPanel = Ext.create('Ext.tab.Panel', {
+        region:'east',
+        width:300,
         items:[Tools.graphviz.EdgePanel,Tools.graphviz.NodePanel]
     });
     /****************************************************************************************/
     Tools.graphviz.MainPanel = Ext.create('Ext.panel.Panel', {
-        renderTo:'MainPanel',
+        renderToa:'MainPanel',
         height:650,
         bodyPadding:5,
         layout:'border',
@@ -429,6 +429,27 @@ Ext.onReady(function(){
             }
         });
     };
+    /****************************************************************************************/
+    Ext.create('Ext.container.Viewport', {
+        layout: 'border',
+        renderTo: Ext.getBody(),
+        items: [{
+            region: 'north',
+            html: '<h1 class="x-panel-header">Wephi bate</h1>',
+            autoHeight: true,
+            border: false,
+            margins: '0 0 5 0'
+        },{
+            region: 'south',
+            title: 'South Panel',
+            collapsible: true,
+            html: 'Information goes here',
+            split: true,
+            height: 100,
+            minHeight: 100
+        },Tools.graphviz.GraphPanel,Tools.graphviz.CenterPanel,Tools.graphviz.EastPanel]
+    });
+
     /****************************************************************************************/
     //初始化
     setTimeout(Tools.graphviz.functionUpdateImageAndcode,1000);

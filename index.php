@@ -18,20 +18,6 @@
         <script type="text/javascript" src="js/graphvizPanel.js"></script>
     </head>
     <body>
-        <div class="mainBody">
-            <div id="content">
-                <div class="mainContent">
-                    <div class="pageTitle">
-                        Wephi beta
-                    </div>
-                    <div class="clear"></div>
-                    <div id="MainPanel">
-                    </div>
-                </div>
-                <div id="footer">
-                    <div class="copy"><a href="http://wephi.googlecode.com" target="_blank">http://wephi.googlecode.com</a></div>
-                </div>
-            </div>
-        </div>
+        
     </body>
 </html>
