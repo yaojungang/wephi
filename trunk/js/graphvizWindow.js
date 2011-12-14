@@ -82,7 +82,7 @@ Ext.onReady(function(){
                 if(gid){
                     Ext.Ajax.request({
                         method:'POST',
-                        url: '/tools/graphviz/jsongraphsaveattr',
+                        url: 'core/index.php?m=grahp&do=saveattr',
                         params:{
                             'id':gid,
                             'attrs':Ext.encode(grid.getSource())
@@ -257,7 +257,7 @@ Ext.onReady(function(){
                 if(id){
                     Ext.Ajax.request({
                         method:'POST',
-                        url: '/tools/graphviz/jsonedgesaveattr',
+                        url: 'core/index.php?m=edge&do=saveattr',
                         params:{
                             'id':id,
                             'attrs':Ext.encode(grid.getSource())
@@ -404,7 +404,7 @@ Ext.onReady(function(){
                 if(id){
                     Ext.Ajax.request({
                         method:'POST',
-                        url: '/tools/graphviz/jsonnodesaveattr',
+                        url: 'core/index.php?m=node&do=saveattr',
                         params:{
                             'id':id,
                             'attrs':Ext.encode(grid.getSource())

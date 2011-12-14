@@ -3,7 +3,9 @@ Ext.onReady(function(){
     /****************************************************************************************/
     Tools.graphviz.GraphPanel = Ext.create('Ext.grid.Panel', {
         region:'west',
-        width:160,
+        width:180,
+        split:true,
+        margins: '0 0 5 5',
         title:'图',
         collapsible:true,
         store: Tools.graphviz.GraphStore,
@@ -12,6 +14,9 @@ Ext.onReady(function(){
             text: '名称',
             flex:1,
             dataIndex: 'name'
+        },{
+            text: '类型',
+            dataIndex: 'type'
         }],
         tbar:[
         {
@@ -199,7 +204,7 @@ Ext.onReady(function(){
             prependButtons:false,
             store: Tools.graphviz.NodeStore,
             dock: 'bottom',
-            displayInfo : true
+            displayInfo : false
         }],
         listeners:{
             itemdblclick:function(view,record,item,index,e,options){
@@ -302,7 +307,7 @@ Ext.onReady(function(){
             prependButtons:false,
             store: Tools.graphviz.EdgeStore,
             dock: 'bottom',
-            displayInfo : true
+            displayInfo : false
         }],
         listeners:{
             itemdblclick:function(view,record,item,index,e,options){
@@ -381,37 +386,24 @@ Ext.onReady(function(){
         }]
     });
     /****************************************************************************************/
-    Tools.graphviz.CenterPanel = Ext.create('Ext.panel.Panel', {
+    Tools.graphviz.CenterPanel = Ext.create('Ext.tab.Panel', {
         region:'center',
-        //title:'预览',
-        border:0,
-        flex:1,
-        layout:'border',
-        defaults:{
-            collapsible:true,
-            split:true,
-            autoScroll: true
-        },
+        margins: '0 0 5 0',
+        title:'预览',
+        tabPosition:'bottom',
         items:[Tools.graphviz.ImagePanel,Tools.graphviz.CodePanel]
     });
     /****************************************************************************************/
     Tools.graphviz.EastPanel = Ext.create('Ext.tab.Panel', {
         region:'east',
-        width:300,
+        split:true,
+        margins: '0 5 5 0',
+        title:'数据',
+        collapsible:true,
+        //hideCollapseTool:false,
+        width:350,
+        tabPosition:'top',
         items:[Tools.graphviz.EdgePanel,Tools.graphviz.NodePanel]
-    });
-    /****************************************************************************************/
-    Tools.graphviz.MainPanel = Ext.create('Ext.panel.Panel', {
-        renderToa:'MainPanel',
-        height:650,
-        bodyPadding:5,
-        layout:'border',
-        defaults:{
-            collapsible:true,
-            split:true,
-            autoScroll: true
-        },
-        items:[Tools.graphviz.GraphPanel,Tools.graphviz.CenterPanel,Tools.graphviz.EastPanel]
     });
     /****************************************************************************************/
     Tools.graphviz.functionUpdateImageAndcode = function (){
@@ -435,18 +427,22 @@ Ext.onReady(function(){
         renderTo: Ext.getBody(),
         items: [{
             region: 'north',
-            html: '<h1 class="x-panel-header">Wephi bate</h1>',
-            autoHeight: true,
+            id: 'header',
+            xtype: 'box',
+            html: '<h1>Wephi bate</h1>',
+            height:30,
             border: false,
             margins: '0 0 5 0'
         },{
             region: 'south',
-            title: 'South Panel',
+            hidden:true,
+            //title: 'South Panel',
             collapsible: true,
+            hideCollapseTool:true,
             html: 'Information goes here',
             split: true,
-            height: 100,
-            minHeight: 100
+            height:40,
+            maxHeight: 100
         },Tools.graphviz.GraphPanel,Tools.graphviz.CenterPanel,Tools.graphviz.EastPanel]
     });
 
