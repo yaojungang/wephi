@@ -18,6 +18,13 @@
         <script type="text/javascript" src="js/graphvizPanel.js"></script>
     </head>
     <body>
-        
+        <?php
+        $d = dirname(__FILE__);
+        define('ROOT', $d == '' ? '/' : $d . '/');
+        if(!file_exists(ROOT . 'core/config0.php')) {
+            header('Location: install/index.php');
+            exit();
+        }
+        ?>
     </body>
 </html>
