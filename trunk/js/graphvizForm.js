@@ -94,7 +94,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'POST',
-                            url: 'core/index.php/?m=graph&do=save',
+                            url: 'core/index.php?m=graph&do=save',
                             params:{
                                 'id':id,
                                 'advanced':0
@@ -119,7 +119,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'GET',
-                            url: 'core/index.php/?m=graph&do=del',
+                            url: 'core/index.php?m=graph&do=del',
                             params:{
                                 'id':id
                             },
@@ -142,7 +142,7 @@ Ext.onReady(function(){
                 values = form.getValues();
                 if (form.getForm().isValid()) {
                     form.getForm().submit({
-                        url: 'core/index.php/?m=graph&do=save',
+                        url: 'core/index.php?m=graph&do=save',
                         submitEmptyText: false,
                         waitMsg: 'Saving Data...',
                         success: function(f, action) {
@@ -278,7 +278,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'GET',
-                            url: 'core/index.php/?m=graph&do=del',
+                            url: 'core/index.php?m=graph&do=del',
                             params:{
                                 'id':id
                             },
@@ -301,7 +301,7 @@ Ext.onReady(function(){
                 values = form.getValues();
                 if (form.getForm().isValid()) {
                     form.getForm().submit({
-                        url: 'core/index.php/?m=graph&do=save',
+                        url: 'core/index.php?m=graph&do=save',
                         submitEmptyText: false,
                         waitMsg: 'Saving Data...',
                         success: function(f, action) {
@@ -333,7 +333,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'POST',
-                            url: '/tools/graphviz/jsongraphsave',
+                            url: 'core/index.php?m=graph&do=save',
                             params:{
                                 'id':id,
                                 'advanced':1
@@ -401,7 +401,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'GET',
-                            url: 'core/index.php/?m=node&do=del',
+                            url: 'core/index.php?m=node&do=del',
                             params:{
                                 'id':id
                             },
@@ -424,7 +424,7 @@ Ext.onReady(function(){
                 values = form.getValues();
                 if (form.getForm().isValid()) {
                     form.getForm().submit({
-                        url: 'core/index.php/?m=node&do=save',
+                        url: 'core/index.php?m=node&do=save',
                         submitEmptyText: false,
                         waitMsg: 'Saving Data...',
                         success: function(f, action) {
@@ -521,7 +521,7 @@ Ext.onReady(function(){
                         var id = node.data.id;
                         Ext.Ajax.request({
                             method:'GET',
-                            url: 'core/index.php/?m=edge&do=del',
+                            url: 'core/index.php?m=edge&do=del',
                             params:{
                                 'id':id
                             },
@@ -544,7 +544,7 @@ Ext.onReady(function(){
                 values = form.getValues();
                 if (form.getForm().isValid()) {
                     form.getForm().submit({
-                        url: 'core/index.php/?m=edge&do=save',
+                        url: 'core/index.php?m=edge&do=save',
                         submitEmptyText: false,
                         waitMsg: 'Saving Data...',
                         success: function(f, action) {
