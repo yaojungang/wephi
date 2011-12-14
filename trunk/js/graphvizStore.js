@@ -10,7 +10,7 @@ Ext.onReady(function(){
         remoteSort: true,
         proxy: {
             type: 'ajax',
-            url: '/tools/graphviz/jsongraphlist',
+            url: 'core/index.php/?m=graph&do=list',
             reader:{
                 type:'json',
                 root:'rows'
@@ -50,7 +50,7 @@ Ext.onReady(function(){
         remoteSort: true,
         proxy: {
             type: 'ajax',
-            url: '/tools/graphviz/jsonnodelist',
+            url: 'core/index.php/?m=node&do=list',
             reader:{
                 type:'json',
                 root:'rows'
@@ -111,7 +111,7 @@ Ext.onReady(function(){
         remoteSort: true,
         proxy: {
             type: 'ajax',
-            url: '/tools/graphviz/jsonedgelist',
+            url: 'core/index.php/?m=edge&do=list',
             reader:{
                 type:'json',
                 root:'rows'
