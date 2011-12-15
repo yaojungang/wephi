@@ -361,7 +361,7 @@ Ext.onReady(function(){
             handler : function(button) {
                 button.el.insertHtml(
                     'beforeBegin',
-                    '<form action="core/index.php?m=grahp&do=code&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="get" style="display:none"></form>'
+                    '<form action="core/index.php?m=grahp&do=code&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="post" style="display:none"></form>'
                     ).submit();
             }
         },'->',{
