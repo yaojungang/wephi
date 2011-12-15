@@ -11,6 +11,7 @@ svn export --force %SVN_URI% wephi
 
 del wephi\core\config.php
 del wephi\core\version.php
+del wephi\images\demo.jpg
 rmdir "wephi\docs" /s/q
 rmdir "wephi\nbproject" /s/q
 
