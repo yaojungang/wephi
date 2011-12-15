@@ -453,20 +453,10 @@ Ext.onReady(function(){
             region: 'north',
             id: 'header',
             xtype: 'box',
-            html: '<h1>Wephi bate</h1>',
+            html: '<div class="title"><h1>Wephi 0.1 bate</h1></div><div class="site"><a href="http://wephi.googlecode.com" target="_blank">http://wephi.googlecode.com</a></div>',
             height:30,
             border: false,
             margins: '0 0 5 0'
-        },{
-            region: 'south',
-            hidden:true,
-            //title: 'South Panel',
-            collapsible: true,
-            hideCollapseTool:true,
-            html: 'Information goes here',
-            split: true,
-            height:40,
-            maxHeight: 100
         },Tools.graphviz.GraphPanel,Tools.graphviz.CenterPanel,Tools.graphviz.EastPanel]
     });
 
