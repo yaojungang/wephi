@@ -352,9 +352,8 @@ Ext.onReady(function(){
     /****************************************************************************************/
     Tools.graphviz.CodePanel = Ext.create('Ext.panel.Panel', {
         title:'代码',
-        region:'south',
-        height:200,
         bodyPadding:5,
+		autoScroll: true,
         tbar:[{
             iconCls: 'icon-save',
             text:'保存',
@@ -386,7 +385,7 @@ Ext.onReady(function(){
     /****************************************************************************************/
     Tools.graphviz.ImagePanel = Ext.create('Ext.panel.Panel', {
         title:'预览',
-        region:'center',
+		autoScroll: true,
         collapsible:true,
         tbar:[{
             iconCls: 'icon-image',
@@ -401,7 +400,7 @@ Ext.onReady(function(){
             iconCls: 'icon-refresh',
             tooltip:'刷新',
             handler:function(btn){
-                var width = Tools.graphviz.CenterPanel.getWidth();
+                var width = Tools.graphviz.CenterPanel.getWidth() - 20;
                 var panel = btn.up('panel');
                 panel.update('<a href="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank">'
                     +'<img width="'+width+'" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
@@ -430,7 +429,7 @@ Ext.onReady(function(){
     });
     /****************************************************************************************/
     Tools.graphviz.functionUpdateImageAndcode = function (){
-        var width = Tools.graphviz.CenterPanel.getWidth();
+        var width = Tools.graphviz.CenterPanel.getWidth() - 20;
         Tools.graphviz.ImagePanel.update('<a href="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank">'
             +'<img width="'+width+'" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
 
