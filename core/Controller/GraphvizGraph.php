@@ -1,4 +1,5 @@
 <?php
+
 /**
  * graph
  */
@@ -73,7 +74,10 @@ class Controller_GraphvizGraph extends Controller_Base
             $this->_hasParam('directed') && $data['directed'] = $this->getParam('directed');
             $this->_hasParam('file_format') && $data['file_format'] = $this->getParam('file_format');
             $this->_hasParam('strict') && $data['strict'] = $this->getParam('strict');
-            $this->_hasParam('attrs') && $data['attrs'] = $this->getParam('attrs');
+            if($this->_hasParam('attrs') && strlen(trim($this->getParam('attrs'))) > 0) {
+                $attrs = trim($this->getParam('attrs'));
+                json_decode($attrs) && $data['attrs'] = $attrs;
+            }
             $this->_hasParam('advanced') && $data['advanced'] = $this->getParam('advanced');
             $this->_hasParam('code') && $data['code'] = $this->getParam('code');
 
@@ -100,9 +104,16 @@ class Controller_GraphvizGraph extends Controller_Base
         $data = array();
         if($this->isPost()) {
             $_id = $this->getParam('id', 0);
-            $data['attrs'] = $this->getParam('attrs');
-            $id = $data['id'] = $_id;
-            $this->graphObj->updateGraphvizGraph($data);
+            $id = 0;
+            if($this->_hasParam('attrs') && strlen(trim($this->getParam('attrs'))) > 0) {
+                $attrs = trim($this->getParam('attrs'));
+                if(json_decode($attrs)) {
+                    $data['attrs'] = $attrs;
+                    $data['attrs'] = $this->getParam('attrs');
+                    $id = $data['id'] = $_id;
+                    $this->graphObj->updateGraphvizGraph($data);
+                }
+            }
 
             if($id > 0) {
                 echo '{"msg":"保存成功","success":true,"data":{"id":' . $id . '}}';

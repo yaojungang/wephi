@@ -1,6 +1,21 @@
 Ext.onReady(function(){
     Ext.ns('Tools','Tools.graphviz');
     /****************************************************************************************/
+    Tools.graphviz.GraphAtts = {
+        'color':'',
+        'bgcolor':'',
+        'size':'',
+        'ratio':'',
+        'margin':'',
+        'nodesep':'',
+        'ranksep':'',
+        'rankdir':'',
+        'rotate':'',
+        'href':'',
+        'splines':''
+
+    };
+    /****************************************************************************************/
     Tools.graphviz.GraphAttrWindow = Ext.create('Ext.window.Window',{
         title : '图扩展属性',
         layout: 'fit',
@@ -57,20 +72,7 @@ Ext.onReady(function(){
                 href:'href - 超链接',
                 splines:'splines - 曲线'
             },
-            source:{
-                'color':'',
-                'bgcolor':'',
-                'size':'',
-                'ratio':'',
-                'margin':'',
-                'nodesep':'',
-                'ranksep':'',
-                'rankdir':'',
-                'rotate':'',
-                'href':'',
-                'splines':''
-
-            }
+            source:Tools.graphviz.GraphAtts
         }],
         buttons : [
         {
@@ -105,6 +107,41 @@ Ext.onReady(function(){
         }
         ]
     });
+    /****************************************************************************************/
+    Tools.graphviz.EdgeAtts = {
+        'minlen':'',
+        'fontsize':'',
+        'fontname':'',
+        'fontcolor':'',
+        'style':'',
+        'color':'',
+        'dir':'',
+        'tailclip':'',
+        'headclip':'',
+        'href':'',
+        'target':'',
+        'tooltip':'',
+        'arrowhead':'',
+        'arrowtail':'',
+        'arrowsize':'',
+        'headlabel':'',
+        'taillabel':'',
+        'headhref':'',
+        'headtarget':'',
+        'headtooltip':'',
+        'tailhref':'',
+        'tailtarget':'',
+        'tailtooltip':'',
+        'labeldistance':'',
+        'port_label_distance':'',
+        'decorate':'',
+        'samehead':'',
+        'sametail':'',
+        'constraint':'',
+        'w':'',
+        'len':'',
+        'weight':''
+    };
     /****************************************************************************************/
     Tools.graphviz.EdgeAttrWindow = Ext.create('Ext.window.Window',{
         title : '边扩展属性',
@@ -206,40 +243,7 @@ Ext.onReady(function(){
                 len:'len - neato-specific',
                 weight:'weight - fdp-specific'
             },
-            source:{
-                'minlen':'',
-                'fontsize':'',
-                'fontname':'',
-                'fontcolor':'',
-                'style':'',
-                'color':'',
-                'dir':'',
-                'tailclip':'',
-                'headclip':'',
-                'href':'',
-                'target':'',
-                'tooltip':'',
-                'arrowhead':'',
-                'arrowtail':'',
-                'arrowsize':'',
-                'headlabel':'',
-                'taillabel':'',
-                'headhref':'',
-                'headtarget':'',
-                'headtooltip':'',
-                'tailhref':'',
-                'tailtarget':'',
-                'tailtooltip':'',
-                'labeldistance':'',
-                'port_label_distance':'',
-                'decorate':'',
-                'samehead':'',
-                'sametail':'',
-                'constraint':'',
-                'w':'',
-                'len':'',
-                'weight':''
-            }
+            source:Tools.graphviz.EdgeAtts
         }],
         buttons : [
         {
@@ -280,6 +284,29 @@ Ext.onReady(function(){
         }
         ]
     });
+    /****************************************************************************************/
+    Tools.graphviz.NodeAtts = {
+        "color":'',
+        "style":'',
+        'height':'',
+        'width':'',
+        'shape':'',
+        'fontsize':'',
+        'fontname':'',
+        'fillcolor':'',
+        'fontcolor':'',
+        'regular':'',
+        'peripheries':'',
+        'sides':'',
+        'orientation':'',
+        'distortion':'',
+        'skew':'',
+        'href':'',
+        'target':'',
+        'tooltip':'',
+        'root':'',
+        'pin':''
+    };
     /****************************************************************************************/
     Tools.graphviz.NodeAttrWindow = Ext.create('Ext.window.Window',{
         title : '节点扩展属性',
@@ -365,28 +392,7 @@ Ext.onReady(function(){
                 pin:'pin - fdp Only ',
                 root:'root - circo Only '
             },
-            source:{
-                "color":'',
-                "style":'',
-                'height':'',
-                'width':'',
-                'shape':'',
-                'fontsize':'',
-                'fontname':'',
-                'fillcolor':'',
-                'fontcolor':'',
-                'regular':'',
-                'peripheries':'',
-                'sides':'',
-                'orientation':'',
-                'distortion':'',
-                'skew':'',
-                'href':'',
-                'target':'',
-                'tooltip':'',
-                'root':'',
-                'pin':''
-            }
+            source:Tools.graphviz.NodeAtts
         }],
         buttons : [
         {

@@ -82,8 +82,8 @@ class Etao_Image_GraphViz
         }
         if(defined('CORE_PATH') && file_exists(CORE_PATH . 'config.php')) {
             $config = include CORE_PATH . 'config.php';
-            if(is_array($config) && isset($config['dotPath'])) {
-                $this->setBinPath($config['dotPath']);
+            if(is_array($config) && isset($config['dotpath'])) {
+                $this->setBinPath($config['dotpath']);
             }
         }
         $this->setAttributes($attributes);

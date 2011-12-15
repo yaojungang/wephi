@@ -623,6 +623,7 @@ function config_edit ($data)
     $config['dbname'] = $data['dbname'];
     $config['charset'] = DBCHARSET;
     $config['dbprefix'] = $data['tablepre'];
+    $config['dotpath'] = $data['dotpath'];
 
     $_data = "<?php\r\n /**\r\n auto created, created on GMT+8 " .
             strftime ("%Y-%m-%d %H:%M:%S", time ()) . " , do not modify it!\r\n*/ \r\nreturn " .

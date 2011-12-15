@@ -68,7 +68,7 @@ define('MISSING_PARAMETER', 33);
 define('LOCK_FILE_NOT_TOUCH', 34);
 
 //note 定义需要检测的函数
-$func_items = array('mysql_connect', 'fsockopen', 'gethostbyname', 'file_get_contents', 'xml_parser_create', 'mb_strlen');
+$func_items = array('mysql_connect', 'fsockopen', 'gethostbyname', 'file_get_contents');
 
 //note 环境要求定义
 $env_items = array
@@ -97,31 +97,7 @@ $form_db_init_items = array
         'dbpw' => array('type' => 'password', 'required' => 0, 'reg' => '/^.*$/', 'value' => array('type' => 'string', 'var' => '')),
         'tablepre' => array('type' => 'text', 'required' => 1, 'reg' => '/^.*$/', 'value' => array('type' => 'string', 'var' => 'wephi_')),
     ),
-);
-
-//note APP key
-$form_app_key_items = array
-    (
-    'appkey' => array
-        (
-        'site_name' => array('type' => 'text', 'required' => 1, 'reg' => '/^.*$/', 'value' => array('type' => 'constant', 'var' => 'SOFT_NAME')),
-        'site_description' => array('type' => 'textarea', 'required' => 0, 'reg' => '/^.*$/'),
-        'app_key' => array('type' => 'text', 'required' => 1, 'reg' => '/(^\d{9}$)|(^[0-9a-z]{32}$)/', 'value' => array('type' => 'string', 'var' => '')),
-        'app_secret' => array('type' => 'text', 'required' => 1, 'reg' => '/^[0-9a-zA-Z]{32}$/', 'value' => array('type' => 'string', 'var' => '')),
-        'use_uc' => array('type' => 'checkbox', 'required' => 0, 'reg' => '/^[01]$/')
-    ),
-    'memcache' => array(
-        'use_memcache' => array('type' => 'checkbox', 'required' => 0, 'reg' => '/^[01]$/'),
-        'memcache_server' => array('type' => 'text', 'required' => 0, 'reg' => '/^.*+/', 'value' => array('type' => 'string', 'var' => '127.0.0.1')),
-        'memcache_port' => array('type' => 'text', 'required' => 0, 'reg' => '/^.*+/', 'value' => array('type' => 'string', 'var' => '11211')),
-    )
-);//note UC应用
-$form_app_reg_items = array
-    (
-    'ucenter' => array
-        (
-        'ucurl' => array('type' => 'text', 'required' => 1, 'reg' => '/^https?:\/\//', 'value' => array('type' => 'var', 'var' => 'ucapi')),
-        'ucip' => array('type' => 'text', 'required' => 0, 'reg' => '/^\d+\.\d+\.\d+\.\d+$/'),
-        'ucpw' => array('type' => 'password', 'required' => 1, 'reg' => '/^.*$/')
+    'graphvizinfo' => array(
+        'dotpath' => array('type' => 'text', 'required' => 0, 'reg' => '/^.*+/', 'value' => array('type' => 'string', 'var' => ''))
     )
 );

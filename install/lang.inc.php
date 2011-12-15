@@ -66,6 +66,10 @@ $lang = array(
 	'step_ext_info_title' => '安装成功',
 	'step_ext_info_desc' => '点击进入',
 
+    'tips_graphvizinfo' => '填写 dot 命令的路径',
+    'dotpath'=>'Dot Path',
+    'dotpath_comment'=>'Graphviz 请前往<a href="http://www.graphviz.org/" target="_blank">Graphviz 官方网站</a> 下载,<br /> Windows 下默认为空，Linux 下请使用 which dot 命令获取 dot 的路径 如 /usr/local/bin/ ， 注意不包括 dot',
+
 	'ext_info_succ' => '安装成功',
 	'install_locked' => '安装锁定，已经安装过了，如果您确定要重新安装，请到服务器上删除<br /> '.str_replace(ROOT_PATH, '', $lockfile),
 	'error_quit_msg' => '您必须解决以上问题，安装才可以继续',
@@ -112,7 +116,6 @@ $lang = array(
 	'adminemail_comment' => '用于发送程序错误报告',
 	'dbhost_comment' => '数据库服务器地址, 一般为 localhost',
 	'charset_comment' => '可选值：gbk big5 utf-8',
-	'tablepre_comment' => '同一数据库运行多个微博时，请修改前缀',
 	'forceinstall_check_label' => '我要删除数据，强制安装 !!!',
 	'cookiedomain_comment' => '例如：iweibo2.qq.com',
 
