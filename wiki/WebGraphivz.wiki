@@ -12,17 +12,17 @@ Wephi 基于 PHP,MySQL 和 Extjs 构建
   * 半可视化画图
   * 支持 一对一，一对多，链式三种关系
 
-== 安装Graphviz ==
-=== Windows ===
+= 安装Graphviz =
+== Windows ==
   http://www.graphviz.org/Download_windows.php
-=== Redhat/Fedora/CentOS ===
+== Redhat/Fedora/CentOS ==
 
 {{{
  cd  /etc/yum.repos.d/  &&  wget http://www.graphviz.org/graphviz-rhel.repo
  yum install graphviz
 }}}
 
-=== Debian/Ubuntu ===
+== Debian/Ubuntu ==
 {{{
 apt-get install graphviz
 }}}
@@ -33,14 +33,14 @@ cd /usr/ports/graphics/graphviz/
 make install
 }}}
 
-=== MacOS ==
+== MacOS ==
 http://www.graphviz.org/Download_macos.php
 
-== 安装 Wephi ==
+= 安装 Wephi =
 安装方法与一般的 PHP + MySQL 程序一样。
 下载地址 http://code.google.com/p/wephi/downloads/list
 
-=== 注意事项 ===
+== 注意事项 ==
 在安装过程中需要提供不 dot 文件的路径，注意 不带 dot 且以 / 结尾
 默认情况下
  * Windows ：保持空白即可，不需要填写
@@ -48,3 +48,6 @@ http://www.graphviz.org/Download_macos.php
  * Debian/Ubuntu ：/usr/bin/
  * FreeBSD ：/usr/local/bin/
  * MacOS ：/usr/local/bin/
+
+= Demo =
+http://wephi.jzland.com
