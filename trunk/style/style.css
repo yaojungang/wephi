@@ -1,6 +1,17 @@
 #header {
-    background0: #7F99BE url(../images/layout-browser-hd-bg.gif) repeat-x center;
     background-color: #193E5C;
+}
+#header .title{
+    float:left;
+}
+#header .site{
+    float:right;
+    color:#fff;
+    padding: 10px;
+}
+#header .site a{
+    color:#fff;
+    text-decoration: none;
 }
 #header h1 {
     font-size: 16px;
