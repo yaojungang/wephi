@@ -1,5 +1,3 @@
-#summary One-sentence summary of this page.
-
 = 简介 =
 
 Wephi 是一个图形化 Graphviz 画图工具。Graphviz为AT&T 实验室所维护，一种纯文字的图形描述语言，它的强大主要体现在“所思即所得"（WYTIWYG，what you think is what you get），这是和office的“所见即所得“（WYSIWYG，what you see is what you get）完全不同的一种方式。它的输入是一个用dot语言 编写的绘图脚本，通过对输入脚本的解析，分析出其中的点，边以及子图，然后根据属性进行绘制。用graphviz来绘图的时候，你的主要工作就是编写dot脚本，你只要关注图中各个点之间的关系就好了，你不需要考虑如何安排各个节点的位置，怎样布局能够使你所绘制的图看起来更美观一些。依据其提供的内容转换成一般现有的图形档格式，如GIF、PNG、SVG ……等等，常被用来做流程图或系通分析图的图形产生工具，其最大特点是仅需提供节点(Node)之间的关系，其相关座标位置由程式自动产生。
