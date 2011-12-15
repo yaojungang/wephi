@@ -130,7 +130,7 @@ class Model_GraphvizGraph extends Model_Base
                     strlen($edge->label) > 0 && $attr['label'] = $edge->label;
                     //边扩展属性
                     $eAttrs = json_decode($edge->attrs);
-                    if($eAttrs && is_array($eAttrs)) {
+                    if($eAttrs) {
                         foreach($eAttrs as $k => $v)
                         {
                             strlen($v) > 0 && $attr[$k] = $v;
