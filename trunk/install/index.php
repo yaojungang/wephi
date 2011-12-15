@@ -160,7 +160,7 @@ if ($method == 'show_license') {//note 显示协议
         }
 
         $_config = array (
-            'dbhost' => $dbhost, 'dbuser' => $dbuser, 'dbpw' => $dbpw, 'dbname' => $dbname, 'tablepre' => $tablepre
+            'dbhost' => $dbhost, 'dbuser' => $dbuser, 'dbpw' => $dbpw, 'dbname' => $dbname, 'tablepre' => $tablepre,'dotpath'=>$dotpath
         );
 
         config_edit ($_config);

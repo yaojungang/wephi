@@ -69,10 +69,13 @@ class Controller_GraphvizNode extends Controller_Base
         $data = array();
         if($this->isPost()) {
             $_id = $this->getParam('id', 0);
-            $data['gid'] = $this->getParam('gid');
-            $data['name'] = $this->getParam('name');
-            $data['label'] = $this->getParam('label');
-            $data['attrs'] = $this->getParam('attrs');
+            $this->_hasParam('gid') && $data['gid'] = $this->getParam('gid');
+            $this->_hasParam('name') && $data['name'] = $this->getParam('name');
+            $this->_hasParam('label') && $data['label'] = $this->getParam('label');
+            if($this->_hasParam('attrs') && strlen(trim($this->getParam('attrs'))) > 0) {
+                $attrs = trim($this->getParam('attrs'));
+                json_decode($attrs) && $data['attrs'] = $attrs;
+            }
 
             if($_id == 0) {
                 $id = $this->nodeObj->addGraphvizNode($data);
@@ -97,9 +100,15 @@ class Controller_GraphvizNode extends Controller_Base
         $data = array();
         if($this->isPost()) {
             $_id = $this->getParam('id', 0);
-            $data['attrs'] = $this->getParam('attrs');
-            $id = $data['id'] = $_id;
-            $this->nodeObj->updateGraphvizNode($data);
+            $id = 0;
+            if($this->_hasParam('attrs') && strlen(trim($this->getParam('attrs'))) > 0) {
+                $attrs = trim($this->getParam('attrs'));
+                if(json_decode($attrs)) {
+                    $data['attrs'] = $attrs;
+                    $id = $data['id'] = $_id;
+                    $this->nodeObj->updateGraphvizNode($data);
+                }
+            }
 
             if($id > 0) {
                 echo '{"msg":"保存成功","success":true,"data":{"id":' . $id . '}}';

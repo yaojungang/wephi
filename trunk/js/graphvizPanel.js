@@ -67,10 +67,20 @@ Ext.onReady(function(){
                     alert('请先选择一个图');
                     return;
                 }else{
-                    var data = selects[0].data.attrs;
-                    if(data.length > 0) {
-                        grid.setSource(Ext.decode(data));
+                    if(parseInt(selects[0].data.advanced) == 1){
+                        alert('高级模式下编辑属性无效');
+                        return;
                     }
+
+                    var attrs = Ext.clone(Tools.graphviz.GraphAtts);
+                    var data = selects[0].data.attrs;
+                    if(data.length > 0){
+                        data = Ext.decode(data);
+                        for(var key in data){
+                            attrs[key] = data[key];
+                        }
+                    }
+                    grid.setSource(attrs);
                     win.setTitle('编辑图属性');
                     win.show();
                 }
@@ -172,18 +182,24 @@ Ext.onReady(function(){
             text:'属性',
             handler:function(btn){
                 var win = Tools.graphviz.NodeAttrWindow;
-                var p = Tools.graphviz.EdgePanel.getPosition();
-                win.setPosition(p[0],p[1]);
+                var p = Tools.graphviz.EastPanel.getPosition();
+                win.setPosition(p[0],p[1]+50);
+                win.setWidth(Tools.graphviz.EastPanel.getWidth());
                 var  grid   = win.down('propertygrid');
                 var selects = Tools.graphviz.NodePanel.getSelectionModel().getSelection();
                 if(selects.length == 0){
                     alert('请先选择一个节点');
                     return;
                 }else{
+                    var attrs = Ext.clone(Tools.graphviz.NodeAtts);
                     var data = selects[0].data.attrs;
-                    if(data.length > 0) {
-                        grid.setSource(Ext.decode(data));
+                    if(data.length > 0){
+                        data = Ext.decode(data);
+                        for(var key in data){
+                            attrs[key] = data[key];
+                        }
                     }
+                    grid.setSource(attrs);
                     win.setTitle('编辑节点属性');
                     win.show();
                 }
@@ -275,18 +291,24 @@ Ext.onReady(function(){
             text:'属性',
             handler:function(btn){
                 var win = Tools.graphviz.EdgeAttrWindow;
-                var p = Tools.graphviz.EdgePanel.getPosition();
-                win.setPosition(p[0],p[1]);
+                var p = Tools.graphviz.EastPanel.getPosition();
+                win.setPosition(p[0],p[1]+50);
+                win.setWidth(Tools.graphviz.EastPanel.getWidth());
                 var  grid   = win.down('propertygrid');
                 var selects = Tools.graphviz.EdgePanel.getSelectionModel().getSelection();
                 if(selects.length == 0){
                     alert('请先选择一条边');
                     return;
                 }else{
+                    var attrs = Ext.clone(Tools.graphviz.EdgeAtts);
                     var data = selects[0].data.attrs;
-                    if(data.length > 0) {
-                        grid.setSource(Ext.decode(data));
+                    if(data.length > 0){
+                        data = Ext.decode(data);
+                        for(var key in data){
+                            attrs[key] = data[key];
+                        }
                     }
+                    grid.setSource(attrs);
                     win.setTitle('修改边属性');
                     win.show();
                 }
@@ -372,16 +394,17 @@ Ext.onReady(function(){
             handler : function(button) {
                 button.el.insertHtml(
                     'beforeBegin',
-                    '<form method="GET" action="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="get" style="display:none"></form>'
+                    '<form action="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="post" style="display:none"></form>'
                     ).submit();
             }
         },'->',{
             iconCls: 'icon-refresh',
             tooltip:'刷新',
             handler:function(btn){
+                var width = Tools.graphviz.CenterPanel.getWidth();
                 var panel = btn.up('panel');
                 panel.update('<a href="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank">'
-                    +'<img width="498" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
+                    +'<img width="'+width+'" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
             }
         }]
     });
@@ -407,8 +430,9 @@ Ext.onReady(function(){
     });
     /****************************************************************************************/
     Tools.graphviz.functionUpdateImageAndcode = function (){
+        var width = Tools.graphviz.CenterPanel.getWidth();
         Tools.graphviz.ImagePanel.update('<a href="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank">'
-            +'<img width="498" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
+            +'<img width="'+width+'" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
 
         Ext.Ajax.request({
             method:'GET',

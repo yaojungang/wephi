@@ -1,5 +1,4 @@
 <?php
-
 define('CORE_PATH', substr(__FILE__, 0, -9));
 define('DS', DIRECTORY_SEPARATOR);
 
