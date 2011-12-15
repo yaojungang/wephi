@@ -68,7 +68,7 @@ $lang = array(
 
     'tips_graphvizinfo' => '填写 dot 命令的路径',
     'dotpath'=>'Dot Path',
-    'dotpath_comment'=>'Graphviz 请前往<a href="http://www.graphviz.org/" target="_blank">Graphviz 官方网站</a> 下载,<br /> Windows 下默认为空，Linux 下请使用 which dot 命令获取 dot 的路径 如 /usr/local/bin/ ， 注意不包括 dot',
+    'dotpath_comment'=>'Graphviz 请前往<a href="http://www.graphviz.org/" target="_blank">Graphviz 官方网站</a> 下载,<br /> Windows 下默认为空，Linux 下请使用 which dot 命令获取 dot 的路径 如 /usr/local/bin/ ， 注意不包括 dot,已 / 结尾',
 
 	'ext_info_succ' => '安装成功',
 	'install_locked' => '安装锁定，已经安装过了，如果您确定要重新安装，请到服务器上删除<br /> '.str_replace(ROOT_PATH, '', $lockfile),
