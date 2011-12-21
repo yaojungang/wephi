@@ -3,7 +3,7 @@ Ext.onReady(function(){
     /****************************************************************************************/
     Tools.graphviz.GraphPanel = Ext.create('Ext.grid.Panel', {
         region:'west',
-        width:180,
+        width:200,
         split:true,
         margins: '0 0 5 5',
         title:'图',
@@ -38,7 +38,7 @@ Ext.onReady(function(){
                         win.show();
                     }
                 },{
-                    text:'高级模式',
+                    text:'代码模式',
                     handler:function(){
                         var win = Tools.graphviz.GraphCodeFormWindow;
                         var form =  win.down('form');
@@ -68,7 +68,7 @@ Ext.onReady(function(){
                     return;
                 }else{
                     if(parseInt(selects[0].data.advanced) == 1){
-                        alert('高级模式下编辑属性无效');
+                        alert('代码模式下编辑属性无效');
                         return;
                     }
 
@@ -112,7 +112,7 @@ Ext.onReady(function(){
                 win.setTitle('编辑图 [普通模式]');
                 if(parseInt(record.data.advanced) == 1){
                     win = Tools.graphviz.GraphCodeFormWindow;
-                    win.setTitle('编辑图 [高级模式]');
+                    win.setTitle('编辑图 [代码模式]');
                 }
                 var form = win.down('form');
 
@@ -385,6 +385,7 @@ Ext.onReady(function(){
     /****************************************************************************************/
     Tools.graphviz.ImagePanel = Ext.create('Ext.panel.Panel', {
         title:'预览',
+		bodyPadding:5,
 		autoScroll: true,
         collapsible:true,
         tbar:[{
@@ -400,7 +401,7 @@ Ext.onReady(function(){
             iconCls: 'icon-refresh',
             tooltip:'刷新',
             handler:function(btn){
-                var width = Tools.graphviz.CenterPanel.getWidth() - 20;
+                var width = Tools.graphviz.CenterPanel.getWidth() - 30;
                 var panel = btn.up('panel');
                 panel.update('<a href="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank">'
                     +'<img width="'+width+'" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
@@ -429,7 +430,7 @@ Ext.onReady(function(){
     });
     /****************************************************************************************/
     Tools.graphviz.functionUpdateImageAndcode = function (){
-        var width = Tools.graphviz.CenterPanel.getWidth() - 20;
+        var width = Tools.graphviz.CenterPanel.getWidth() - 30;
         Tools.graphviz.ImagePanel.update('<a href="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank">'
             +'<img width="'+width+'" src="core/index.php?m=grahp&do=image&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" /></a>');
 
@@ -461,6 +462,6 @@ Ext.onReady(function(){
 
     /****************************************************************************************/
     //初始化
-    setTimeout(Tools.graphviz.functionUpdateImageAndcode,1000);
+    //setTimeout(Tools.graphviz.functionUpdateImageAndcode,1000);
 /****************************************************************************************/
 });
