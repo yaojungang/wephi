@@ -186,6 +186,7 @@ class Etao_Image_GraphViz
         $outputfile = $file . '.' . $format;
 
         $rendered = $this->renderDotFile($file, $outputfile, $command);
+        @unlink($file);
         if($rendered !== true) {
             return $rendered;
         }
@@ -252,7 +253,6 @@ class Etao_Image_GraphViz
         if(readfile($outputfile) === false) {
             $return = false;
         }
-        @unlink($file);
         @unlink($outputfile);
 
         return $return;

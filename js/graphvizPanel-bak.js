@@ -33,7 +33,7 @@ Ext.onReady(function(){
                         win.show();
                     }
                 },{
-                    text:'高级模式',
+                    text:'代码模式',
                     handler:function(){
                         var win = Tools.graphviz.GraphCodeFormWindow;
                         var form =  win.down('form');
@@ -97,7 +97,7 @@ Ext.onReady(function(){
                 win.setTitle('编辑图 [普通模式]');
                 if(parseInt(record.data.advanced) == 1){
                     win = Tools.graphviz.GraphCodeFormWindow;
-                    win.setTitle('编辑图 [高级模式]');
+                    win.setTitle('编辑图 [代码模式]');
                 }
                 var form = win.down('form');
 

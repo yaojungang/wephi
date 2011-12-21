@@ -75,12 +75,12 @@ Ext.onReady(function(){
             },{
                 xtype: 'textarea',
                 name : 'code',
-                height:500,
+                height:400,
                 allowBlank:false,
                 fieldLabel: '代码'
             },{
                 xtype:'displayfield',
-                value:'高级模式下，生成图像时，只识别代码框里的代码'
+                value:'代码模式下，生成图像时，只识别代码框里的代码'
             }
             ]
         }],
@@ -324,10 +324,10 @@ Ext.onReady(function(){
         }]
         ,
         tbar:['->',{
-            text:'转换为 【高级模式】',
+            text:'转换为 【代码模式】',
             handler:function(button){
                 var win    = button.up('window');
-                Ext.MessageBox.confirm('确认', '转换为 【高级模式】后,针对“关系”和“节点”的编辑将全部失效，您确定要这样做吗？', function(btn){
+                Ext.MessageBox.confirm('确认', '转换为 【代码模式】后,针对“关系”和“节点”的编辑将全部失效，您确定要这样做吗？', function(btn){
                     if('yes' == btn){
                         var node = Tools.graphviz.GraphPanel.getSelectionModel().getSelection()[0];
                         var id = node.data.id;
