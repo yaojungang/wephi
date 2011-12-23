@@ -50,7 +50,7 @@ class Controller_GraphvizEdge extends Controller_Base
         $list = $this->edgeObj->queryAll($select, $conditions);
         $paginator = Zend_Paginator::factory($list);
         $paginator->setCurrentPageNumber($page);
-        //每页条数
+//每页条数
         $paginator->setItemCountPerPage($limit);
         $data = $paginator->getCurrentItems()->getArrayCopy();
         $list = new Etao_Ext_GridList();
@@ -126,6 +126,35 @@ class Controller_GraphvizEdge extends Controller_Base
         if($id > 0) {
             $this->edgeObj->deleteGraphvizEdge($id);
             echo '删除成功';
+        }
+    }
+
+    /**
+     * 导入边
+     */
+    public function importAction()
+    {
+        if(!empty($_FILES['csv']) && $this->_hasParam('gid') && strlen(trim($this->getParam('gid') > 0))) {
+            $gid = $this->getParam('gid');
+            $edges = array();
+            $filename = $_FILES['csv']['tmp_name'];
+            try
+            {
+                $i = 0;
+                $file = fopen($filename, 'r');
+                while($data = fgetcsv($file))
+                {
+                    $edges[] = array(trim($data[0]), trim($data[1]));
+                    $i++;
+                }
+                fclose($file);
+                $this->edgeObj->addEdgeByArray($gid, $edges);
+                echo '{"msg":"导入成功 , 共导入 ' . $i . $filename . ' 条记录","success":true}';
+                @unlink($filename);
+            } catch(Exception $e)
+            {
+                echo '{"msg":"发生错误 : ' . $e->getMessage() . '","success":false}';
+            }
         }
     }
 

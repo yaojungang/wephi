@@ -179,4 +179,22 @@ class Model_GraphvizEdge extends Model_Base
         return $this->delete('gid = "' . $gid . '"');
     }
 
+    public function addEdgeByArray($gid, $edges)
+    {
+        if(is_array($edges)) {
+            foreach($edges as $edge)
+            {
+                $this->nodeObj->addNodeByName($gid, $edge[0]);
+                $this->nodeObj->addNodeByName($gid, $edge[1]);
+                $data = array(
+                    'gid' => $gid,
+                    'type' => self::TYPE_ONE2ONE,
+                    'node1' => $edge[0],
+                    'node2' => $edge[1]
+                );
+                $this->add($data);
+            }
+        }
+    }
+
 }

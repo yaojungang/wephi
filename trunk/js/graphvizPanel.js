@@ -3,7 +3,7 @@ Ext.onReady(function(){
     /****************************************************************************************/
     Tools.graphviz.GraphPanel = Ext.create('Ext.grid.Panel', {
         region:'west',
-        width:200,
+        width:230,
         split:true,
         margins: '0 0 5 5',
         title:'图',
@@ -55,7 +55,7 @@ Ext.onReady(function(){
             }
 
         },{
-            iconCls: 'icon-import',
+            iconCls: 'icon-application_view_list',
             text:'属性',
             handler:function(btn){
                 var win = Tools.graphviz.GraphAttrWindow;
@@ -86,6 +86,29 @@ Ext.onReady(function(){
                 }
             }
         },'->',{
+            iconCls: 'icon-export',
+            text:'导出',
+            menu : {
+                items: [{
+                    text:'Dot 格式',
+                    handler:function(button){
+                        button.el.insertHtml(
+                            'beforeBegin',
+                            '<form action="core/index.php?m=grahp&do=exportdot&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="post" style="display:none"></form>'
+                            ).submit();
+                    }
+                },{
+                    text:'CSV 格式',
+                    handler:function(button){
+                        button.el.insertHtml(
+                            'beforeBegin',
+                            '<form action="core/index.php?m=grahp&do=exportcsv&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="post" style="display:none"></form>'
+                            ).submit();
+                    }
+                }]
+            }
+
+        },{
             tooltip:'刷新',
             iconCls: 'icon-refresh',
             handler:function(btn){
@@ -178,8 +201,8 @@ Ext.onReady(function(){
                 win.show();
             }
         },{
-            iconCls: 'icon-import',
-            text:'属性',
+            iconCls: 'icon-application_view_list',
+            text:'节点属性',
             handler:function(btn){
                 var win = Tools.graphviz.NodeAttrWindow;
                 var p = Tools.graphviz.EastPanel.getPosition();
@@ -287,8 +310,8 @@ Ext.onReady(function(){
                 win.show();
             }
         },{
-            iconCls: 'icon-import',
-            text:'属性',
+            iconCls: 'icon-application_view_list',
+            text:'边属性',
             handler:function(btn){
                 var win = Tools.graphviz.EdgeAttrWindow;
                 var p = Tools.graphviz.EastPanel.getPosition();
@@ -314,6 +337,25 @@ Ext.onReady(function(){
                 }
             }
         },'->',{
+            iconCls: 'icon-import',
+            text:'导入',
+            handler:function(btn){
+                var win = Tools.graphviz.EdgeImportFormWindow;
+                var selects = Tools.graphviz.GraphPanel.getSelectionModel().getSelection();
+                if(selects.length == 0){
+                    alert('请先选择一个图');
+                    return;
+                }else{
+                    win.setTitle('导入边');
+                    var form = win.down('form');
+                    var gid = Tools.graphviz.currentGid;
+                    var gidField = form.down('*[name=gid]');
+                    gidField.setValue(gid);
+
+                    win.show();
+                }
+            }
+        },{
             tooltip:'刷新',
             iconCls: 'icon-refresh',
             handler:function(btn){
@@ -353,14 +395,14 @@ Ext.onReady(function(){
     Tools.graphviz.CodePanel = Ext.create('Ext.panel.Panel', {
         title:'代码',
         bodyPadding:5,
-		autoScroll: true,
+        autoScroll: true,
         tbar:[{
             iconCls: 'icon-save',
             text:'保存',
             handler : function(button) {
                 button.el.insertHtml(
                     'beforeBegin',
-                    '<form action="core/index.php?m=grahp&do=code&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="post" style="display:none"></form>'
+                    '<form action="core/index.php?m=grahp&do=exportdot&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="post" style="display:none"></form>'
                     ).submit();
             }
         },'->',{
@@ -385,8 +427,8 @@ Ext.onReady(function(){
     /****************************************************************************************/
     Tools.graphviz.ImagePanel = Ext.create('Ext.panel.Panel', {
         title:'预览',
-		bodyPadding:5,
-		autoScroll: true,
+        bodyPadding:5,
+        autoScroll: true,
         collapsible:true,
         tbar:[{
             iconCls: 'icon-image',
@@ -460,8 +502,8 @@ Ext.onReady(function(){
         },Tools.graphviz.GraphPanel,Tools.graphviz.CenterPanel,Tools.graphviz.EastPanel]
     });
 
-    /****************************************************************************************/
-    //初始化
-    //setTimeout(Tools.graphviz.functionUpdateImageAndcode,1000);
+/****************************************************************************************/
+//初始化
+//setTimeout(Tools.graphviz.functionUpdateImageAndcode,1000);
 /****************************************************************************************/
 });
