@@ -154,5 +154,39 @@ class Controller_GraphvizGraph extends Controller_Base
         }
     }
 
+    /**
+     * 导出Dot格式
+     */
+    public function exportdotAction()
+    {
+        $_id = $this->getParam('id', 0);
+        if((int)$_id > 0) {
+            $code = $this->graphObj->getCode($_id);
+            header('Content-Type: text/plain');
+            header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+            header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+            header('Content-Disposition: attachment; filename="graphviz_' . $_id . '.dot"');
+            header('Content-Length: ' . strlen($code));
+            echo $code;
+        }
+    }
+
+    /**
+     * 导出Dot格式
+     */
+    public function exportcsvAction()
+    {
+        $_id = $this->getParam('id', 0);
+        if((int)$_id > 0) {
+            $code = $this->graphObj->getCsvData($_id);
+            header('Content-Type: text/plain');
+            header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+            header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+            header('Content-Disposition: attachment; filename="graphviz_' . $_id . '.csv"');
+            header('Content-Length: ' . strlen($code));
+            echo $code;
+        }
+    }
+
 }
 

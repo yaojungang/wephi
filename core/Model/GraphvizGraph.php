@@ -209,6 +209,55 @@ class Model_GraphvizGraph extends Model_Base
     }
 
     /**
+     * 生成CSV格式数据
+     * @return type
+     */
+    public function getCsvData($id)
+    {
+        $graph = $this->findById($id);
+        if($graph) {
+            $result = '';
+            if((int)$graph->advanced == 1) {
+                return;
+            } else {
+                $graph = $this->findGraphById($id);
+                //添加边
+                foreach($graph->edges as $edge)
+                {
+                    $edge = (object)$edge;
+                    // 展开节点
+                    switch((int)$edge->type)
+                    {
+                        case Model_GraphvizEdge::TYPE_ONE2ONE:
+                            $result .= '"' . trim($edge->node1) . '"' . ',' . '"' . trim($edge->node2) . '"' . "\n";
+                            break;
+                        case Model_GraphvizEdge::TYPE_ONE2MANY:
+                            $nodes = explode(',', $edge->node2);
+                            foreach($nodes as $value)
+                            {
+                                $result .= '"' . trim($edge->node1) . '"' . ',' . '"' . trim($value) . '"' . "\n";
+                            }
+                            break;
+                        case Model_GraphvizEdge::TYPE_LINK:
+                            $nodes = explode(',', $edge->node2);
+                            $l = count($nodes);
+                            $node_last = trim($edge->node1);
+                            for($i = 0; $i < $l; $i++)
+                            {
+                                $result .= '"' . trim($node_last) . '"' . ',' . '"' . trim($nodes[$i]) . '"' . "\n";
+                                $node_last = trim($nodes[$i]);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                return $result;
+            }
+        }
+    }
+
+    /**
      * 生成图像
      * @param type $id
      */

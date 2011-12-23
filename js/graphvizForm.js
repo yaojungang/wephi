@@ -499,7 +499,20 @@ Ext.onReady(function(){
             },{
                 name : 'node2',
                 allowBlank:false,
-                fieldLabel: '节点2'
+                fieldLabel: '节点2',
+                listeners : {
+                    render : function(field) {
+                        Ext.QuickTips.init();
+                        Ext.QuickTips.register({
+                            target : field.el,
+                            text : '对于一对多和链式的边，节点2中可填入多个节点，节点间用 , 隔开'
+                        })
+                    }
+                }
+            },{
+                xtype:'displayfield',
+                fieldLabel:'提示',
+                value: '<font color="red">对于一对多和链式的边，节点2中可填入多个节点，节点间用 , 隔开</font>'
             },{
                 name : 'label',
                 xtype: 'textarea',
@@ -547,6 +560,75 @@ Ext.onReady(function(){
                         url: 'core/index.php?m=edge&do=save',
                         submitEmptyText: false,
                         waitMsg: 'Saving Data...',
+                        success: function(f, action) {
+                            Etao.msg.info('Success', action.result.msg);
+                            win.hide();
+                            form.getForm().reset();
+                            Tools.graphviz.EdgeStore.load();
+                            Tools.graphviz.functionUpdateImageAndcode();
+                        }
+                    });
+                }
+
+            }
+        },
+        {
+            text: '取消',
+            handler: function(button){
+                var win = button.up('window');
+                win.close();
+            }
+        }
+        ]
+    });
+    /****************************************************************************************/
+    /****************************************************************************************/
+    Tools.graphviz.EdgeImportFormWindow =  Ext.create('Ext.window.Window',{
+        title : '导入边',
+        layout: 'fit',
+        autoShow: false,
+        width: 580,
+        closeAction:'hide',
+        modal:false,
+        items:[{
+            xtype: 'form',
+            padding: '5 5 0 5',
+            border: false,
+            style: 'background-color: #fff;',
+            layout: 'anchor',
+            defaults:{
+                labelWidth:60,
+                xtype: 'textfield',
+                labelAlign:'right',
+                allowBlank: true,
+                anchor:'-10'
+            },
+            items: [{
+                xtype: 'hiddenfield',
+                name: 'gid'
+            },{
+                xtype: 'filefield',
+                name : 'csv',
+                fieldLabel: 'CSV 文件'
+            },{
+                xtype:'displayfield',
+                fieldLabel:'提示',
+                value: '<font color="red">CSV 文件中只能包含一对一关系，每条关系占一行，节点间用 , 隔开</font>'
+            }]
+        }],
+        buttons : [
+        {
+            text: '导入',
+            handler:function(button){
+                var win    = button.up('window'),
+                form   = win.down('form'),
+                record = form.getRecord(),
+                values = form.getValues();
+                if (form.getForm().isValid()) {
+                    form.getForm().submit({
+                        url: 'core/index.php?m=edge&do=import',
+                        submitEmptyText: false,
+                        waitMsg: '正在上传，请稍候...',
                         success: function(f, action) {
                             Etao.msg.info('Success', action.result.msg);
                             win.hide();
