@@ -20,6 +20,7 @@ if(!file_exists(ROOT . 'core/config.php')) {
         <script type="text/javascript" src="js/ext/locale/ext-lang-zh_CN.js"></script>
         <script type="text/javascript" src="js/common.js"></script>
         <script type="text/javascript" src="js/etao.js"></script>
+        <script type="text/javascript" src="js/wephi-lang-en.js"></script>
         <script type="text/javascript" src="js/graphvizForm.js"></script>
         <script type="text/javascript" src="js/graphvizStore.js"></script>
         <script type="text/javascript" src="js/graphvizWindow.js"></script>
