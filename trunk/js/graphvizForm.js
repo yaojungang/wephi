@@ -110,7 +110,7 @@ Ext.onReady(function(){
             }
         }],
         buttons : [{
-            text:'删除',
+            text:Tools.graphviz.deleteText,
             handler:function(button){
                 var win    = button.up('window');
                 Ext.MessageBox.confirm('确认', '删除后不能恢复，您确定要删除该条记录吗？', function(btn){
@@ -134,7 +134,7 @@ Ext.onReady(function(){
             }
         },'->',
         {
-            text: '保存',
+            text: Tools.graphviz.saveText,
             handler:function(button){
                 var win    = button.up('window'),
                 form   = win.down('form'),
@@ -157,7 +157,7 @@ Ext.onReady(function(){
             }
         },
         {
-            text: '取消',
+            text: Tools.graphviz.cancelText,
             handler: function(button){
                 var win = button.up('window');
                 win.close();
@@ -269,7 +269,7 @@ Ext.onReady(function(){
             ]
         }],
         buttons : [{
-            text:'删除',
+            text:Tools.graphviz.deleteText,
             handler:function(button){
                 var win    = button.up('window');
                 Ext.MessageBox.confirm('确认', '删除后不能恢复，您确定要删除该条记录吗？', function(btn){
@@ -293,7 +293,7 @@ Ext.onReady(function(){
             }
         },'->',
         {
-            text: '保存',
+            text: Tools.graphviz.saveText,
             handler:function(button){
                 var win    = button.up('window'),
                 form   = win.down('form'),
@@ -316,7 +316,7 @@ Ext.onReady(function(){
             }
         },
         {
-            text: '取消',
+            text: Tools.graphviz.cancelText,
             handler: function(button){
                 var win = button.up('window');
                 win.close();
@@ -392,7 +392,7 @@ Ext.onReady(function(){
             ]
         }],
         buttons : [{
-            text:'删除',
+            text:Tools.graphviz.deleteText,
             handler:function(button){
                 var win    = button.up('window');
                 Ext.MessageBox.confirm('确认', '删除后不能恢复，您确定要删除该条记录吗？', function(btn){
@@ -416,7 +416,7 @@ Ext.onReady(function(){
             }
         },'->',
         {
-            text: '保存',
+            text: Tools.graphviz.saveText,
             handler:function(button){
                 var win    = button.up('window'),
                 form   = win.down('form'),
@@ -441,7 +441,7 @@ Ext.onReady(function(){
             }
         },
         {
-            text: '取消',
+            text: Tools.graphviz.cancelText,
             handler: function(button){
                 var win = button.up('window');
                 win.close();
@@ -525,7 +525,7 @@ Ext.onReady(function(){
             ]
         }],
         buttons : [{
-            text:'删除',
+            text:Tools.graphviz.deleteText,
             handler:function(button){
                 var win    = button.up('window');
                 Ext.MessageBox.confirm('确认', '删除后不能恢复，您确定要删除该条记录吗？', function(btn){
@@ -549,7 +549,7 @@ Ext.onReady(function(){
             }
         },'->',
         {
-            text: '保存',
+            text: Tools.graphviz.saveText,
             handler:function(button){
                 var win    = button.up('window'),
                 form   = win.down('form'),
@@ -573,7 +573,7 @@ Ext.onReady(function(){
             }
         },
         {
-            text: '取消',
+            text: Tools.graphviz.cancelText,
             handler: function(button){
                 var win = button.up('window');
                 win.close();
@@ -641,7 +641,7 @@ Ext.onReady(function(){
             }
         },
         {
-            text: '取消',
+            text: Tools.graphviz.cancelText,
             handler: function(button){
                 var win = button.up('window');
                 win.close();

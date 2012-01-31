@@ -6,49 +6,49 @@ Ext.onReady(function(){
         width:230,
         split:true,
         margins: '0 0 5 5',
-        title:'图',
+        title:Tools.graphviz.graphText,
         collapsible:true,
         store: Tools.graphviz.GraphStore,
         hideHeaders:true,
         columns: [{
-            text: '名称',
+            text: Tools.graphviz.nameText,
             flex:1,
             dataIndex: 'name'
         },{
-            text: '类型',
+            text: Tools.graphviz.typeText,
             dataIndex: 'type'
         }],
         tbar:[
         {
             iconCls: 'icon-add',
-            text:'新建',
+            text:Tools.graphviz.newGraphText,
             menu : {
                 items: [{
-                    text:'普通模式',
+                    text:Tools.graphviz.normalModeText,
                     handler:function(){
                         var win = Tools.graphviz.GraphFormWindow;
                         var form =  win.down('form');
-                        win.setTitle('新建');
+                        win.setTitle(Tools.graphviz.newGraphText);
                         form.getForm().reset();
                         form.getForm().setValues({
                             });
-                        win.down('button[text="保存"]').show();
-                        win.down('button[text="取消"]').show();
-                        win.down('button[text="删除"]').hide();
+                        win.down('button[text="'+Tools.graphviz.saveText+'"]').show();
+                        win.down('button[text="'+Tools.graphviz.cancelText+'"]').show();
+                        win.down('button[text="'+Tools.graphviz.deleteText+'"]').hide();
                         win.show();
                     }
                 },{
-                    text:'代码模式',
+                    text:Tools.graphviz.codeModeText,
                     handler:function(){
                         var win = Tools.graphviz.GraphCodeFormWindow;
                         var form =  win.down('form');
-                        win.setTitle('新建');
+                        win.setTitle(Tools.graphviz.newGraphText);
                         form.getForm().reset();
                         form.getForm().setValues({
                             });
-                        win.down('button[text="保存"]').show();
-                        win.down('button[text="取消"]').show();
-                        win.down('button[text="删除"]').hide();
+                        win.down('button[text="'+Tools.graphviz.saveText+'"]').show();
+                        win.down('button[text="'+Tools.graphviz.cancelText+'"]').show();
+                        win.down('button[text="'+Tools.graphviz.deleteText+'"]').hide();
                         win.show();
                     }
                 }]
@@ -56,7 +56,7 @@ Ext.onReady(function(){
 
         },{
             iconCls: 'icon-application_view_list',
-            text:'属性',
+            text:Tools.graphviz.attributeText,
             handler:function(btn){
                 var win = Tools.graphviz.GraphAttrWindow;
                 var p = Tools.graphviz.CenterPanel.getPosition();
@@ -64,11 +64,11 @@ Ext.onReady(function(){
                 var  grid   = win.down('propertygrid');
                 var selects = Tools.graphviz.GraphPanel.getSelectionModel().getSelection();
                 if(selects.length == 0){
-                    alert('请先选择一个图');
+                    alert(Tools.graphviz.pleaseSelectAPictureText);
                     return;
                 }else{
                     if(parseInt(selects[0].data.advanced) == 1){
-                        alert('代码模式下编辑属性无效');
+                        alert(Tools.graphviz.codeModeAttributeUnUseAbleText);
                         return;
                     }
 
@@ -81,16 +81,17 @@ Ext.onReady(function(){
                         }
                     }
                     grid.setSource(attrs);
-                    win.setTitle('编辑图属性');
+                    win.setTitle(Tools.graphviz.editGraphAttributeText);
                     win.show();
                 }
             }
         },'->',{
             iconCls: 'icon-export',
-            text:'导出',
+            text:Tools.graphviz.exportText,
             menu : {
                 items: [{
-                    text:'Dot 格式',
+                    text:Tools.graphviz.dotFormatText,
+                    tooltip:Tools.graphviz.dotFormatTooltipText,
                     handler:function(button){
                         button.el.insertHtml(
                             'beforeBegin',
@@ -98,7 +99,8 @@ Ext.onReady(function(){
                             ).submit();
                     }
                 },{
-                    text:'CSV 格式',
+                    text:Tools.graphviz.csvFormatText,
+                    tooltip:Tools.graphviz.csvFormatTooltipText,
                     handler:function(button){
                         button.el.insertHtml(
                             'beforeBegin',
@@ -109,7 +111,7 @@ Ext.onReady(function(){
             }
 
         },{
-            tooltip:'刷新',
+            tooltip:Tools.graphviz.refreshText,
             iconCls: 'icon-refresh',
             handler:function(btn){
                 var panel = btn.up('gridpanel'),store;
@@ -339,6 +341,7 @@ Ext.onReady(function(){
         },'->',{
             iconCls: 'icon-import',
             text:'导入',
+            tooltip:'CSV 文件中只能包含一对一关系，每条关系占一行，节点间用 , 隔开',
             handler:function(btn){
                 var win = Tools.graphviz.EdgeImportFormWindow;
                 var selects = Tools.graphviz.GraphPanel.getSelectionModel().getSelection();
@@ -354,6 +357,16 @@ Ext.onReady(function(){
 
                     win.show();
                 }
+            }
+        },{
+            tooltip:'导出 CSV 格式文件，一对多和链式结构的边会被展开为一对一格式',
+            text:'导出',
+            iconCls: 'icon-export',
+            handler:function(btn){
+                button.el.insertHtml(
+                    'beforeBegin',
+                    '<form action="core/index.php?m=grahp&do=exportcsv&id='+Tools.graphviz.currentGid+'&t='+(new Date().getTime())+'" target="_blank" method="post" style="display:none"></form>'
+                    ).submit();
             }
         },{
             tooltip:'刷新',
